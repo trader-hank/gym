@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gym">
+<meta name="theme-color" content="#0c0e11">
+
+<title>Gym</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0e11;--p:#15181e;--p2:#1c2028;--ln:#2a2f39;--tx:#eef1f5;--mu:#8b929e;--ac:#c5ff3a;--bad:#ff5c5c}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Barlow,sans-serif}
+.wrap{max-width:520px;margin:0 auto;padding:0 14px 130px}
+header{padding:16px 2px 6px;display:flex;justify-content:space-between;align-items:flex-start}
+.kick{font-family:Oswald;font-weight:600;letter-spacing:.18em;font-size:11px;color:var(--ac);text-transform:uppercase}
+h1{font-family:Oswald;font-weight:700;font-size:22px;margin:2px 0 0}
+.menu{background:var(--p);border:1px solid var(--ln);color:var(--tx);font-size:18px;width:42px;height:42px;border-radius:11px}
+.banner{background:#2a1416;border:1px solid var(--bad);color:#ffb3b3;border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;margin:6px 0 4px}
+.tabs{position:sticky;top:0;z-index:30;background:var(--bg);padding:10px 0 8px;margin:0 -14px}
+.ti{display:flex;gap:7px;overflow-x:auto;padding:0 14px}.ti::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;font-family:Oswald;font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--mu);background:var(--p);border:1px solid var(--ln);border-radius:11px;padding:9px 13px}
+.tab.on{color:#0c0e11;background:var(--ac);border-color:var(--ac)}
+.dh{display:flex;align-items:baseline;justify-content:space-between;margin:8px 2px 14px;gap:10px}
+.dh h2{font-family:Oswald;font-weight:700;font-size:27px;margin:0;line-height:1}
+.dh .sub{color:var(--mu);font-size:13px;font-weight:600;margin-top:3px}
+.prog{font-family:Oswald;font-weight:600;font-size:13px;color:var(--ac);white-space:nowrap;border:1px solid #3a4a12;border-radius:20px;padding:5px 11px}
+.card{background:var(--p);border:1px solid var(--ln);border-radius:16px;padding:14px 14px 6px;margin-bottom:11px}
+.et{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.en{font-family:Oswald;font-weight:600;font-size:17px;line-height:1.15}
+.es{font-family:Oswald;font-weight:600;font-size:13px;color:var(--ac);white-space:nowrap}
+.tag{display:inline-block;font-size:11px;font-weight:600;color:var(--mu);background:var(--p2);border-radius:6px;padding:2px 7px;margin-top:5px}
+.last{font-size:12px;color:var(--mu);margin:7px 0 2px;font-weight:600}.last b{color:#c2c8d2}
+.sets{margin-top:8px}.sr{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--ln)}
+.no{font-family:Oswald;font-weight:600;font-size:13px;color:var(--mu);width:30px;flex:0 0 30px}
+.in{flex:1;min-width:0}.in input{width:100%;background:var(--p2);border:1px solid var(--ln);border-radius:10px;color:var(--tx);font-weight:600;font-size:16px;text-align:center;padding:11px 6px;outline:none}
+.in input:focus{border-color:var(--ac)}.in .l{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-align:center;margin-bottom:3px;font-weight:600}
+.ck{flex:0 0 46px;height:46px;border-radius:11px;border:1px solid var(--ln);background:var(--p2);color:var(--mu);font-size:20px;display:flex;align-items:center;justify-content:center;margin-top:14px}
+.ck.on{background:var(--ac);border-color:var(--ac);color:#0c0e11}.sr.on .in input{opacity:.55;border-style:dashed}
+.nt .en{margin-bottom:6px}.nt .ds{color:var(--mu);font-size:13.5px;line-height:1.5;margin-bottom:10px}
+.nt .ck{margin-top:0;width:100%;flex:1;font-family:Oswald;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.ft{position:fixed;bottom:0;left:0;right:0;z-index:30;background:linear-gradient(transparent,var(--bg) 38%);padding:22px 14px 18px}
+.fi{max-width:520px;margin:0 auto}.fin{width:100%;border:none;border-radius:14px;padding:15px;font-family:Oswald;font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;background:var(--ac);color:#0c0e11}
+.fin.r{background:var(--p);color:var(--mu);border:1px solid var(--ln)}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:var(--p2);border:1px solid var(--ac);color:var(--ac);font-family:Oswald;font-weight:600;font-size:13px;padding:11px 18px;border-radius:12px;opacity:0;transition:.25s;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.tip{color:var(--mu);font-size:12px;text-align:center;margin:14px 4px 0;line-height:1.5}
+.bf{display:flex;gap:8px;margin-bottom:14px}.bf input{flex:1;background:var(--p2);border:1px solid var(--ln);border-radius:11px;color:var(--tx);font-weight:600;font-size:16px;text-align:center;padding:13px;outline:none}
+.bf button{background:var(--ac);color:#0c0e11;border:none;border-radius:11px;padding:0 18px;font-family:Oswald;font-weight:700;font-size:14px;text-transform:uppercase}
+.lr{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--p);border:1px solid var(--ln);border-radius:12px;margin-bottom:8px}
+.lr .v{font-family:Oswald;font-weight:600;font-size:16px}.lr .dl{font-size:12px;color:var(--mu);font-weight:600;margin-left:8px}
+.hd{font-family:Oswald;font-weight:600;font-size:16px;color:var(--ac)}.hdt{font-size:12px;color:var(--mu)}
+.hi{font-size:12.5px;color:#c2c8d2;line-height:1.6;margin-top:6px}.emp{color:var(--mu);text-align:center;padding:30px 10px;font-size:13.5px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:60;display:none;align-items:flex-end}.ov.on{display:flex}
+.md{background:var(--p);border-radius:18px 18px 0 0;width:100%;max-width:520px;margin:0 auto;padding:18px 16px 26px}
+.md h3{font-family:Oswald;font-weight:700;margin:0 0 12px;font-size:18px}.md .row{display:flex;gap:8px;margin-bottom:10px}
+.md button{flex:1;background:var(--p2);color:var(--tx);border:1px solid var(--ln);border-radius:11px;padding:13px;font-family:Oswald;font-weight:600;font-size:13px;text-transform:uppercase}
+.md textarea{width:100%;height:90px;background:var(--p2);border:1px solid var(--ln);border-radius:11px;color:var(--tx);font-size:12px;padding:10px;margin-top:6px;font-family:monospace}
+.md .st{font-size:12.5px;color:var(--mu);margin:2px 0 12px;line-height:1.5}.md .st b{color:var(--ac)}
+</style></head><body>
+<div class="wrap">
+<header><div><div class="kick">Build Block · Upper Emphasis</div><h1>Gym</h1></div><button class="menu" id="mb">⋯</button></header>
+<div id="bn"></div>
+<div class="tabs"><div class="ti" id="tabs"></div></div>
+<div class="dh"><div><h2 id="dt"></h2><div class="sub" id="ds"></div></div><div class="prog" id="pg"></div></div>
+<div id="cards"></div><div class="tip" id="tip"></div>
+</div>
+<div class="ft"><div class="fi"><button class="fin" id="fb"></button></div></div>
+<div class="toast" id="ts"></div>
+<div class="ov" id="ov"><div class="md">
+<h3>Data &amp; Backup</h3><div class="st" id="ss"></div>
+<div class="row"><button id="exp">Copy backup</button><button id="imp">Restore</button></div>
+<textarea id="db" placeholder="Backup text appears here. To restore, paste it and tap Restore."></textarea>
+<div class="row" style="margin-top:12px"><button id="cm">Close</button></div>
+</div></div>
+<script>
+var mem={},OK=false;
+try{localStorage.setItem('_t','1');OK=localStorage.getItem('_t')==='1';localStorage.removeItem('_t')}catch(e){OK=false}
+function g(k){try{return localStorage.getItem(k)}catch(e){return k in mem?mem[k]:null}}
+function s(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+function d(k){try{localStorage.removeItem(k)}catch(e){}delete mem[k]}
+function keys(){var o=[];try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(/^(last:|cur:|hist|bw)/.test(k))o.push(k)}}catch(e){for(var m in mem)o.push(m)}return o}
+function L(id,n,sc,t,st){return{id:id,n:n,sc:sc,t:t,st:st,ty:'l',load:1,u:'reps'}}
+function B(id,n,sc,t,st,u){return{id:id,n:n,sc:sc,t:t,st:st,ty:'b',load:0,u:u||'reps'}}
+function N(id,n,ds){return{id:id,n:n,ds:ds,ty:'n'}}
+var P={
+mon:{day:'Mon',title:'Push A',sub:'Chest emphasis',it:[L('inc_bb','Incline barbell press','4 × 6–8','RIR 1–2',4),L('flat_db','Flat DB press','3 × 8–10','RIR 1–2',3),L('wdip','Weighted dip · chest lean','3 × 8–10','RIR 1',3),L('cfly','High-to-low cable fly','3 × 12–15','RIR 0–1',3),L('db_ohp','Seated DB shoulder press','3 × 8–10','RIR 1–2',3),L('oh_tri','Overhead cable triceps ext.','3 × 10–12','RIR 0–1',3),B('hlr1','Hanging leg raise','3 × 10–15','core',3)]},
+tue:{day:'Tue',title:'Pull A',sub:'Width + biceps',it:[L('wpu','Weighted pull-up','4 × 6–8','RIR 1–2',4),L('lpd','Wide lat pulldown','3 × 10–12','RIR 1',3),L('csr','Chest-supported row','3 × 8–10','RIR 1',3),L('fp','Face pull','3 × 15–20','RIR 0–1',3),L('inc_curl','Incline DB curl','3 × 10–12','RIR 0–1',3),L('ham','Hammer curl','3 × 10–12','RIR 0–1',3),L('cc1','Cable crunch · loaded','3 × 12–15','core',3)]},
+wed:{day:'Wed',title:'Hyrox',sub:'Legs + conditioning',rest:1,it:[N('hyrox','Hyrox w/ trainer','Your leg work — sled, lunges, wall balls, carries, rower, run. No gym leg day needed.')]},
+thu:{day:'Thu',title:'Push B',sub:'Chest / shoulders / tri',it:[L('bench','Flat barbell bench','4 × 5–7','RIR 1–2',4),L('inc_db','Incline DB press','3 × 10–12','RIR 1',3),L('mcp','Machine chest press','3 × 12–15','RIR 0–1',3),L('lat','Lateral raise','4 × 12–20','RIR 0–1',4),L('cgb','Close-grip bench','3 × 8–10','RIR 1',3),L('pd1','Triceps pushdown','3 × 12–15','RIR 0–1',3),B('abw','Ab wheel','3 × 8–12','core',3)]},
+fri:{day:'Fri',title:'Pull B',sub:'Thickness + arms',it:[L('row','Barbell row','4 × 6–8','RIR 1–2',4),L('scr','Seated cable row','3 × 10–12','RIR 1',3),L('sadb','Single-arm DB row','3 × 10–12','RIR 1',3),L('rdf','Rear delt fly','3 × 15','RIR 0–1',3),L('ez','EZ-bar curl · heavy','3 × 8–10','RIR 1',3),L('preach','Preacher curl','3 × 10–12','RIR 0–1',3),L('ccurl','Cable curl','2 × 12–15','RIR 0',2),L('ohtri','Overhead rope tri ext.','3 × 10–12','RIR 0–1',3),L('pd2','Triceps pushdown','2 × 12–15','RIR 0–1',2),B('pallof','Pallof press','3 × 12/side','core',3)]},
+sat:{day:'Sat',title:'Calisthenics',sub:'Lincoln Park · vest',it:[N('jt','Jog there · ~1 mi (vest)','Easy. Warm-up + loaded carry.'),L('wpu2','Weighted pull-up / chin-up','4 × 6–10','vest',4),L('wdip2','Weighted dip · chest lean','4 × 8–12','vest',4),B('pu','Push-ups · feet-up/archer','3 × ~2 shy','',3),B('iv','Inverted / Australian rows','3 × 10–15','',3),B('pk','Pike push-ups','3 × 8–12','shoulders',3),B('ch','Close chin-ups','2 × AMRAP','biceps',2),B('hlr2','Hanging leg raise','3 × 10–15','core',3),B('ls','L-sit hold','3 × max','core','sec'),B('ho','Hollow-body hold','3 × 30–45s','core','sec'),N('jh','Jog home · ~1 mi (vest)','Free loaded conditioning.')]},
+sun:{day:'Sun',title:'Long Run',sub:'Easy aerobic',rest:1,it:[N('lr','Long run · 45–75 min','Easy zone 2, ~160 bpm. Optional 4–6 × 20s strides at the end.')]}
+};
+var ORD=['mon','tue','wed','thu','fri','sat','sun','body','history'],LAB={body:'Body',history:'Log'};
+var cur='mon',state={};
+function today(){return['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()]}
+function tot(x){return P[x].it.reduce(function(a,i){return a+(i.ty==='n'?1:i.st)},0)}
+function dn(){var n=0;for(var k in state)state[k].forEach(function(x){if(x.dn)n++});return n}
+function fl(a){if(!a||!a.length)return null;return a.filter(function(x){return x.w||x.r}).map(function(x){return(x.w||'–')+(x.r?'×'+x.r:'')}).join('  ')}
+function tabs(){var t=document.getElementById('tabs');t.innerHTML='';ORD.forEach(function(x){var b=document.createElement('button');b.className='tab'+(x===cur?' on':'');b.textContent=LAB[x]||P[x].day;b.onclick=function(){sel(x)};t.appendChild(b)})}
+function prog(){var p=document.getElementById('pg');if(P[cur]){p.style.display='';p.textContent=dn()+'/'+tot(cur)}else p.style.display='none'}
+function save(){s('cur:'+cur,JSON.stringify(state))}
+function sel(x){cur=x;tabs();var fb=document.getElementById('fb');
+ if(x==='body'){body();fb.style.display='none';return}
+ if(x==='history'){hist();fb.style.display='none';return}
+ fb.style.display='';var pp=P[x];document.getElementById('dt').textContent=pp.title;document.getElementById('ds').textContent=pp.sub;
+ var raw=g('cur:'+x);state=raw?JSON.parse(raw):{};
+ pp.it.forEach(function(i){if(!state[i.id]){var n=i.ty==='n'?1:i.st;state[i.id]=[];for(var k=0;k<n;k++)state[i.id].push({w:'',r:'',dn:false})}});
+ var lm={};pp.it.filter(function(i){return i.ty!=='n'}).forEach(function(i){var l=g('last:'+i.id);if(l)lm[i.id]=JSON.parse(l)});
+ cards(pp,lm);prog();fb.className=pp.rest?'fin r':'fin';fb.textContent=pp.rest?'Mark day done':'Finish session →';window.scrollTo(0,0);
+ document.getElementById('tip').textContent='Type weights as you go — they save instantly. Hit Finish to bank the session.';}
+function mkin(lab,val,mode,cb){var w=document.createElement('div');w.className='in';var l=document.createElement('span');l.className='l';l.textContent=lab;var i=document.createElement('input');i.type='text';i.inputMode=mode;i.value=val||'';i.placeholder='–';i.oninput=function(){cb(i.value.trim())};w.appendChild(l);w.appendChild(i);return w}
+function cards(pp,lm){var wr=document.getElementById('cards');wr.innerHTML='';
+ pp.it.forEach(function(i){var c=document.createElement('div');c.className='card'+(i.ty==='n'?' nt':'');
+  if(i.ty==='n'){c.innerHTML='<div class="en">'+i.n+'</div><div class="ds">'+i.ds+'</div>';var b=document.createElement('button');var done=state[i.id][0].dn;b.className='ck'+(done?' on':'');b.textContent=done?'✓ Done':'Mark done';b.onclick=function(){state[i.id][0].dn=!state[i.id][0].dn;b.classList.toggle('on');b.textContent=state[i.id][0].dn?'✓ Done':'Mark done';save();prog()};c.appendChild(b);wr.appendChild(c);return}
+  var ls=fl(lm[i.id]);c.innerHTML='<div class="et"><div class="en">'+i.n+'</div><div class="es">'+i.sc+'</div></div>'+(i.t?'<span class="tag">'+i.t+'</span>':'')+(ls?'<div class="last">Last: <b>'+ls+'</b></div>':'');
+  var bx=document.createElement('div');bx.className='sets';
+  state[i.id].forEach(function(st,k){var r=document.createElement('div');r.className='sr'+(st.dn?' on':'');var no=document.createElement('div');no.className='no';no.textContent=k+1;r.appendChild(no);
+   if(i.load)r.appendChild(mkin('LB',st.w,'decimal',function(v){st.w=v;save()}));
+   r.appendChild(mkin(i.u==='sec'?'SEC':'REPS',st.r,'numeric',function(v){st.r=v;save()}));
+   var ck=document.createElement('button');ck.className='ck'+(st.dn?' on':'');ck.textContent='✓';ck.onclick=function(){st.dn=!st.dn;r.classList.toggle('on');ck.classList.toggle('on');save();prog()};r.appendChild(ck);bx.appendChild(r)});
+  c.appendChild(bx);wr.appendChild(c)})}
+function finish(){var pp=P[cur],ri={};
+ pp.it.filter(function(i){return i.ty!=='n'}).forEach(function(i){var a=state[i.id].map(function(x){return{w:x.w,r:x.r}});if(a.some(function(x){return x.w||x.r})){s('last:'+i.id,JSON.stringify(a));ri[i.n]=fl(a)}});
+ if(Object.keys(ri).length){var h=JSON.parse(g('hist')||'[]');h.unshift({date:new Date().toISOString(),title:pp.title,items:ri});s('hist',JSON.stringify(h.slice(0,300)))}
+ d('cur:'+cur);toast(pp.rest?'Logged ✓':'Session saved ✓');sel(cur)}
+function body(){document.getElementById('dt').textContent='Body';document.getElementById('ds').textContent='Weekly weight';prog();
+ var bw=JSON.parse(g('bw')||'[]'),wr=document.getElementById('cards');
+ wr.innerHTML='<div class="bf"><input id="bi" inputmode="decimal" placeholder="Weight (lb)"><button id="ba">Log</button></div>';
+ var ls=document.createElement('div');
+ if(!bw.length)ls.innerHTML='<div class="emp">No weigh-ins yet. Log weekly — aim +0.25–0.5 lb/wk.</div>';
+ else bw.forEach(function(e,k){var pv=bw[k+1],dt=pv?(e.w-pv.w):null,ds=dt===null?'':'<span class="dl">'+(dt>0?'+':'')+dt.toFixed(1)+'</span>';var r=document.createElement('div');r.className='lr';r.innerHTML='<span>'+new Date(e.date).toLocaleDateString(undefined,{month:'short',day:'numeric'})+'</span><span class="v">'+e.w+' lb '+ds+'</span>';ls.appendChild(r)});
+ wr.appendChild(ls);document.getElementById('tip').textContent='Slight surplus: +0.25–0.5 lb/week.';
+ document.getElementById('ba').onclick=function(){var v=parseFloat(document.getElementById('bi').value);if(!v)return;var a=JSON.parse(g('bw')||'[]');a.unshift({date:new Date().toISOString(),w:v});s('bw',JSON.stringify(a));toast('Weight logged ✓');body()}}
+function hist(){document.getElementById('dt').textContent='Log';document.getElementById('ds').textContent='Finished sessions';prog();
+ var h=JSON.parse(g('hist')||'[]'),wr=document.getElementById('cards');wr.innerHTML='';document.getElementById('tip').textContent='';
+ if(!h.length){wr.innerHTML='<div class="emp">Nothing logged yet. Finish a session and it shows here.</div>';return}
+ h.forEach(function(e){var c=document.createElement('div');c.className='card';var it=Object.keys(e.items).map(function(k){return k+': <b style="color:#eef1f5">'+e.items[k]+'</b>'}).join('<br>');c.innerHTML='<div style="display:flex;justify-content:space-between;align-items:baseline"><span class="hd">'+e.title+'</span><span class="hdt">'+new Date(e.date).toLocaleDateString(undefined,{month:'short',day:'numeric'})+'</span></div><div class="hi">'+it+'</div>';wr.appendChild(c)})}
+function toast(m){var t=document.getElementById('ts');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},1700)}
+var ov=document.getElementById('ov');
+document.getElementById('mb').onclick=function(){document.getElementById('ss').innerHTML=OK?'Saving is <b>ON</b> — your data persists on this device.':'⚠ Saving is OFF here. Open from your hosted link / home-screen icon.';ov.classList.add('on')};
+document.getElementById('cm').onclick=function(){ov.classList.remove('on')};
+ov.onclick=function(e){if(e.target===ov)ov.classList.remove('on')};
+document.getElementById('exp').onclick=function(){var o={};keys().forEach(function(k){o[k]=g(k)});var t=JSON.stringify(o);document.getElementById('db').value=t;if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast('Backup copied ✓')},function(){toast('Copied to box ↓')});else toast('Copied to box ↓')};
+document.getElementById('imp').onclick=function(){var t=document.getElementById('db').value.trim();if(!t){toast('Paste a backup first');return}try{var o=JSON.parse(t);Object.keys(o).forEach(function(k){s(k,o[k])});toast('Restored ✓');sel(cur)}catch(e){toast('Invalid backup text')}};
+document.getElementById('fb').onclick=finish;
+if(!OK)document.getElementById('bn').innerHTML='⚠ Preview only — saving is blocked here. Once you open it from your hosted link / home-screen icon, everything saves.';
+cur=today();sel(cur);
+['pagehide','visibilitychange','beforeunload'].forEach(function(ev){window.addEventListener(ev,function(){if(P[cur])save()})});
+</script></body></html>
